@@ -3,7 +3,7 @@ package org.evertones.nasaOpenApi.v1.apiProperties;
 public enum MarsRovers {
     CURIOSITY("curiosity"),
     OPPORTUNITY("opportunity"),
-    SPIRITY("spirit");
+    SPIRIT("spirit");
 
     private final String value;
 
