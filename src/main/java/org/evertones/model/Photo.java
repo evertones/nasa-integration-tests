@@ -78,13 +78,37 @@ public class Photo {
         builder.append("photo: { \n");
         builder.append(String.format("  id: %s \n", this.id));
         builder.append(String.format("  sol: %s \n", this.sol));
-//        builder.append(String.format("  camera: %s \n", this.camera));
         builder.append(String.format("  imgSrc: %s \n", this.imgSrc));
         builder.append(String.format("  earthDate: %s \n", this.earthDate));
-//        builder.append(this.rover.toString());
         builder.append("}");
 
         return builder.toString();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        Photo photo = obj instanceof Photo ? (Photo) obj : null;
+
+        Boolean equalProperties = this.getId().equals(photo.getId())
+                && this.getSol().equals(photo.getSol())
+                && this.getEarthDate().equals(photo.getEarthDate())
+                && this.getImgSrc().equals(photo.getImgSrc());
+
+        Camera camera1 = this.getCamera();
+        Camera camera2 = photo.getCamera();
+        Boolean equalCamera = camera1.getId().equals(camera2.getId())
+                && camera1.getName().equals(camera2.getName())
+                && camera1.getFullName().equals(camera2.getFullName())
+                && camera1.getRoverId().equals(camera2.getRoverId());
+
+        Rover rover1 = this.getRover();
+        Rover rover2 = photo.getRover();
+        Boolean equalRover = rover1.getId().equals(rover2.getId())
+                && rover1.getName().equals(rover2.getName())
+                && rover1.getStatus().equals(rover2.getStatus())
+                && rover1.getLandingDate().equals(rover2.getLandingDate())
+                && rover1.getLaunchDate().equals(rover2.getLaunchDate());
+
+        return equalProperties && equalCamera && equalRover;
     }
 }
