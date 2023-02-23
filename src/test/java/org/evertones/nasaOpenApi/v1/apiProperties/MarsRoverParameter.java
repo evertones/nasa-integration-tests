@@ -1,6 +1,7 @@
 package org.evertones.nasaOpenApi.v1.apiProperties;
 
-public enum MarsRoverEarthDateParameter {
+public enum MarsRoverParameter {
+    SOL("sol"),
     EARTH_DATE("earth_date"),
     CAMERA("camera"),
     PAGE("page"),
@@ -8,7 +9,7 @@ public enum MarsRoverEarthDateParameter {
 
     private final String value;
 
-    private MarsRoverEarthDateParameter(String value) {
+    private MarsRoverParameter(String value) {
         this.value = value;
     }
 
