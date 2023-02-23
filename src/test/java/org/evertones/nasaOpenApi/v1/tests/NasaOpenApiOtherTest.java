@@ -19,6 +19,10 @@ public class NasaOpenApiOtherTest
 
     private static final Logger LOGGER = Logger.getLogger(NasaOpenApiOtherTest.class.getName());
 
+    /**
+     * Method to test a basic request with valid parameters.
+     * The NASA Open API returns an HTTP status 200.
+     */
     @Test
     public void testGetResponse200Ok() {
         given()
@@ -31,6 +35,10 @@ public class NasaOpenApiOtherTest
                 .statusCode(200);
     }
 
+    /**
+     * Method to test the request with an invalid URL.
+     * The NASA Open API returns an HTTP status 404.
+     */
     @Test
     public void testGetResponse404NotFound() throws URISyntaxException, MalformedURLException {
 
@@ -48,6 +56,10 @@ public class NasaOpenApiOtherTest
                 .statusCode(404);
     }
 
+    /**
+     * Method to test the request with an invalid value for the parameter `api_key`.
+     * The NASA Open API returns an HTTP status 403.
+     */
     @Test
     public void testGetResponse403Forbidden() {
         given()
@@ -60,6 +72,10 @@ public class NasaOpenApiOtherTest
                 .statusCode(403);
     }
 
+    /**
+     * Method to test the request without a date parameter (either `sol=1000` or an `earth_date=<date>`).
+     * The NASA Open API returns an empty object when this parameter is not sent.
+     */
     @Test
     public void testGetResponseEmpty() {
         MarsPhotos marsPhotos = given()
@@ -70,6 +86,22 @@ public class NasaOpenApiOtherTest
                 .as(MarsPhotos.class);
 
         assertTrue(marsPhotos.getPhotos().isEmpty());
+    }
+
+    /**
+     * Method to test the request with an invalid value for the parameter `earth_date`.
+     * The NASA Open API breaks and returns an HTTP status 500.
+     */
+    @Test
+    public void testGetResponse500InvalidDate() {
+        given()
+                .param(MarsRoverParameter.API_KEY.getValue(), getNasaApiKey())
+                .param(MarsRoverParameter.EARTH_DATE.getValue(), "2015-05-34")
+                .param(MarsRoverParameter.PAGE.getValue(), "1")
+                .when().log().all()
+                .get(getMarsPhotosByCuriosityApiUrl().toString())
+                .then()
+                .statusCode(500);
     }
 
 }
