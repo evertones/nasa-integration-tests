@@ -1,5 +1,5 @@
 plugins {
-    id 'application'
+    id 'java'
 }
 
 repositories {
@@ -11,19 +11,17 @@ version = "0.0.1-SNAPSHOT"
 description = "Integration Tests for NASA Open API."
 
 dependencies {
-    //testImplementation gradleApi()
-
     // Dependencies for testing libraries
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
     testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.0'
     testImplementation group: 'com.typesafe', name: 'config', version: '1.4.2'
+    testImplementation group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: '3.1.0'
 
     // Dependencies to deserialize the GET responses from RestAssured
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.14.2'
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.14.2'
 
-    // This dependency is used by the application.
     implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
 }
 
@@ -31,8 +29,7 @@ test {
 
     ext.getConfigMap = {
         def config = [
-                'nasa.openapi.key'       : project.ext.get('nasa.openapi.key'),
-                'test.integration.suite' : project.ext.get('test.integration.suite')
+            'nasa.openapi.key'       : project.ext.get('nasa.openapi.key'),
         ]
 
         return config
