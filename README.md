@@ -55,5 +55,5 @@ To run the tests, please:
 - clone the repository to a specific folder
 - cd into the folder
 - run the following command (example with syntax for MacOS and Linux OS)
-  - `./gradlew test --tests org.evertones.nasaOpenApi.v1.tests.NasaSuite`
+  - `./gradlew clean test --tests org.evertones.nasaOpenApi.v1.tests.NasaSuite`
 - all tests must pass
