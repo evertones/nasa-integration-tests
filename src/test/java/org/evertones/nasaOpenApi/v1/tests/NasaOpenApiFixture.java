@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 public class NasaOpenApiFixture {
 
-    private static final String BASE_URL_TEMPLATE           = "https://api.nasa.gov";
+    private static final String BASE_URL_TEMPLATE = "https://api.nasa.gov";
     private static final String MARS_ROVER_API_URI_TEMPLATE = "/mars-photos/api/v1/rovers/%s/photos";
 
     public static final String EARTH_DATE_1000_SOL = "2015-05-30";
@@ -36,13 +36,13 @@ public class NasaOpenApiFixture {
         try {
             baseUrl = new URL(BASE_URL_TEMPLATE);
 
-            URI marsPhotosByCuriosityApiUri   = new URI(String.format(MARS_ROVER_API_URI_TEMPLATE, MarsRovers.CURIOSITY));
+            URI marsPhotosByCuriosityApiUri = new URI(String.format(MARS_ROVER_API_URI_TEMPLATE, MarsRovers.CURIOSITY));
             URI marsPhotosByOpportunityApiUri = new URI(String.format(MARS_ROVER_API_URI_TEMPLATE, MarsRovers.OPPORTUNITY));
-            URI marsPhotosBySpiritApiUri      = new URI(String.format(MARS_ROVER_API_URI_TEMPLATE, MarsRovers.SPIRIT));
+            URI marsPhotosBySpiritApiUri = new URI(String.format(MARS_ROVER_API_URI_TEMPLATE, MarsRovers.SPIRIT));
 
-            marsPhotosByCuriosityApiUrl   = baseUrl.toURI().resolve(marsPhotosByCuriosityApiUri).toURL();
+            marsPhotosByCuriosityApiUrl = baseUrl.toURI().resolve(marsPhotosByCuriosityApiUri).toURL();
             marsPhotosByOpportunityApiUrl = baseUrl.toURI().resolve(marsPhotosByOpportunityApiUri).toURL();
-            marsPhotosBySpiritApiUrl      = baseUrl.toURI().resolve(marsPhotosBySpiritApiUri).toURL();
+            marsPhotosBySpiritApiUrl = baseUrl.toURI().resolve(marsPhotosBySpiritApiUri).toURL();
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (URISyntaxException e) {

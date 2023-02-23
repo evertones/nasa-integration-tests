@@ -152,8 +152,8 @@ public class NasaOpenApiTest
         LOGGER.info(String.format("Total opportunity: %s", totalOpportunity));
         LOGGER.info(String.format("Total spirit: %s", totalSpirit));
 
-        Integer totalOpportunitySpirit = totalOpportunity + totalSpirit;
-        LOGGER.info(String.format("%s is not greater than %s", totalOpportunitySpirit, totalCuriosity));
+        Integer totalOpportunitySpririt = totalOpportunity + totalSpirit;
+        LOGGER.info(String.format("%s is not greater than %s", totalOpportunitySpririt, totalCuriosity));
 
         assertFalse((totalOpportunity + totalSpirit) > totalCuriosity);
     }
